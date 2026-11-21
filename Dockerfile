@@ -4,4 +4,4 @@ RUN mkdir -p /app/data
 COPY requirements.txt .
 RUN python -m pip install --no-cache-dir -r requirements.txt
 COPY . .
-CMD ["python", "app.py"]
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
